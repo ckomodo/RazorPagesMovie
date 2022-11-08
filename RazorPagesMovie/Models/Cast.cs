@@ -14,11 +14,11 @@ namespace RazorPagesMovie.Models
 
         [ForeignKey("MovieId")]  //should refer to an actor, not  
         public Movie? Movie { get; set; } //property representing Movie entity
-        public int? MovieId { get; set; } //column representing FK r'ship with Movie table 
+        public int MovieId { get; set; } //column representing FK r'ship with Movie table 
 
-        //[ForeignKey("ActorId")]  
-        //public Actor? Actor { get; set; }
-        //public int? ActorId { get; set; }
+        [ForeignKey("ActorId")]
+        public Actor? Actor { get; set; }
+        public int? ActorId { get; set; }
 
 
     }
