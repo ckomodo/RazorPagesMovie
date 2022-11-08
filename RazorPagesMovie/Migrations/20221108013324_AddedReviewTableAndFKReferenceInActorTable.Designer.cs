@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RazorPagesMovie.Data;
 
@@ -11,9 +12,10 @@ using RazorPagesMovie.Data;
 namespace RazorPagesMovie.Migrations
 {
     [DbContext(typeof(RazorPagesMovieContext))]
-    partial class RazorPagesMovieContextModelSnapshot : ModelSnapshot
+    [Migration("20221108013324_AddedReviewTableAndFKReferenceInActorTable")]
+    partial class AddedReviewTableAndFKReferenceInActorTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,9 +35,8 @@ namespace RazorPagesMovie.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("LastName")
+                        .HasColumnType("int");
 
                     b.Property<string>("MiddleName")
                         .HasColumnType("nvarchar(max)");
@@ -113,36 +114,6 @@ namespace RazorPagesMovie.Migrations
                     b.ToTable("Movie");
                 });
 
-            modelBuilder.Entity("RazorPagesMovie.Models.Production", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Costume")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Director")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("MovieId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Producer")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Writer")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MovieId");
-
-                    b.ToTable("Production");
-                });
-
             modelBuilder.Entity("RazorPagesMovie.Models.Review", b =>
                 {
                     b.Property<int>("Id")
@@ -191,17 +162,6 @@ namespace RazorPagesMovie.Migrations
                         .IsRequired();
 
                     b.Navigation("Actor");
-
-                    b.Navigation("Movie");
-                });
-
-            modelBuilder.Entity("RazorPagesMovie.Models.Production", b =>
-                {
-                    b.HasOne("RazorPagesMovie.Models.Movie", "Movie")
-                        .WithMany()
-                        .HasForeignKey("MovieId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
 
                     b.Navigation("Movie");
                 });
