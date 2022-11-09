@@ -61,9 +61,9 @@ namespace RazorPagesMovie.Models
                     }
                 );
                 context.SaveChanges();
-            }
 
+            } //end Initialize method
 
         }
-    }
+    } //end class seed data
 }

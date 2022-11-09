@@ -38,5 +38,7 @@ namespace RazorPagesMovie.Models
         [StringLength(5)]
         [Required]
         public String Rating { get; set; } = string.Empty;
+
+        public ICollection<Cast> Casts { get; set;}
     }
 }

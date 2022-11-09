@@ -7,14 +7,14 @@ namespace RazorPagesMovie.Models
     {
         public int Id { get; set; }
 
-        [ForeignKey("MovieId")]  //refers to a movie
-        public Movie? Movie { get; set; } //property representing Movie entity
+        //[ForeignKey("MovieId")]  //refers to a movie
         public int MovieId { get; set; } //column representing FK r'ship with Movie table 
 
-        [ForeignKey("ActorId")]
-        public Actor? Actor { get; set; }
+       // [ForeignKey("ActorId")]
         public int? ActorId { get; set; }
 
+        public Movie? Movie { get; set; }
+        public Actor? Actor { get; set; }
 
     }
 }

@@ -16,6 +16,7 @@ namespace RazorPagesMovie.Models
         public string LastName { get; set; }       
         public string? PlayingAs { get; set; } //actor's character's name in the movie
 
+        public ICollection<Cast> Casts { get; set;}
 
     }
 }
