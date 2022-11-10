@@ -28,7 +28,6 @@ namespace RazorPagesMovie.Data
             modelBuilder.Entity<Review>().ToTable("Review");
             modelBuilder.Entity<Production>().ToTable("Production");
 
-
         }
     }
 }
