@@ -20,5 +20,15 @@ namespace RazorPagesMovie.Data
         public DbSet<Review> Review { get; set; }
         public DbSet<Production> Production { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Movie>().ToTable("Movie");
+            modelBuilder.Entity<Cast>().ToTable("Cast");
+            modelBuilder.Entity<Actor>().ToTable("Actor");
+            modelBuilder.Entity<Review>().ToTable("Review");
+            modelBuilder.Entity<Production>().ToTable("Production");
+
+
+        }
     }
 }
