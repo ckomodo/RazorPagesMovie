@@ -9,7 +9,7 @@ namespace RazorPagesMovie.Models
 
         //string Title initialzed to an empty string
         [StringLength(60, MinimumLength = 3)]//min and max string length
-        [Required]
+        //[Required]
         public string Title { get; set; } = string.Empty;
 
         //The [Display] attribute specifies the display name of a field.
@@ -20,9 +20,9 @@ namespace RazorPagesMovie.Models
         //[Display(Name = "Movie Genre")]
         [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$")]//limits x-ters to be input. Must only use letters
         // first letter must be uppercase. White spaces are allowed, no numbers & special characters
-        [Required]
+        //[Required]
         [StringLength(30)]//maximum length of a string property
-        public string Genre { get; set; } = string.Empty;
+        public string Genre { get; set; }
 
         //enables Entity Framework Core to correctly map Price to currency in the database.
         [Range(1, 100)]//constrains a value to within a specified range
@@ -36,8 +36,8 @@ namespace RazorPagesMovie.Models
 
         [RegularExpression(@"^[A-Z]+[a-zA-Z0-9""'\s-]*$")]
         [StringLength(5)]
-        [Required]
-        public String Rating { get; set; } = string.Empty;
+        //[Required]
+        public string Rating { get; set; }
 
         public ICollection<Cast> Casts { get; set;}
     }

@@ -14,14 +14,6 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 var app = builder.Build();
 
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-
-    SeedData.Initialize(services);
-}
-
-
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -33,6 +25,15 @@ else
 {
     app.UseDeveloperExceptionPage();
     app.UseMigrationsEndPoint();
+}
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+
+    var context = services.GetRequiredService<RazorPagesMovieContext>();
+    //context.Database.EnsureCreated();
+    DbInitializer.Initialize(context);
 }
 
 //Redirects HTTP requests to HTTPS.

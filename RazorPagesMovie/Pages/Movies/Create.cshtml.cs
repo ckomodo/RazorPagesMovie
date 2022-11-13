@@ -12,9 +12,9 @@ namespace RazorPagesMovie.Pages.Movies
 {
     public class CreateModel : PageModel
     {
-        private readonly RazorPagesMovie.Data.RazorPagesMovieContext _context;
+        private readonly RazorPagesMovieContext _context;
 
-        public CreateModel(RazorPagesMovie.Data.RazorPagesMovieContext context)
+        public CreateModel(RazorPagesMovieContext context)
         {
             _context = context;
         }
@@ -31,7 +31,7 @@ namespace RazorPagesMovie.Pages.Movies
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return Page();
             }
@@ -40,6 +40,16 @@ namespace RazorPagesMovie.Pages.Movies
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
+
+            //var EmptyMovie = new Movie();
+            //if (await TryUpdateModelAsync<Movie>(EmptyMovie, "Movie", m=>m.Title,
+            //    m=>m.ReleaseDate, m => m.Genre, m => m.Price, m => m.Rating))
+            //{
+            //    _context.Movie.Add(EmptyMovie);
+            //    await _context.SaveChangesAsync();
+            //    return RedirectToPage("./Index");
+            //}
+            //return Page();
         }
     }
 }
